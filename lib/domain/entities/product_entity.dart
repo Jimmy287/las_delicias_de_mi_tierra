@@ -3,7 +3,7 @@ class ProductEntity {
   final String? path;
   final String? description;
   final int? quantity;
-  final double? price;
+  final String? price;
 
   ProductEntity({
     this.name,
@@ -21,7 +21,7 @@ class ProductEntity {
               ? json['description']! as String
               : '',
           quantity: (json['quantity'] != null) ? json['quantity']! as int : 0,
-          price: (json['price'] != null) ? json['price']! as double : 0.0,
+          price: (json['price'] != null) ? json['price']! as String : '',
         );
   Map<String, Object?> toJson() {
     return {
