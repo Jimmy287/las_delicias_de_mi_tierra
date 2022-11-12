@@ -1,0 +1,25 @@
+{
+    "products": [
+        {
+            "name": "Chontaduro", 
+            "path": "assets/images/chontaduro.png",
+            "description": "Excepteur anim exercitation aliqua proident do aliqua sit occaecat. Laboris ex voluptate pariatur do velit magna officia qui. Cillum ex veniam ipsum aliqua enim minim fugiat sint officia ea occaecat veniam. Dolor quis excepteur nostrud nostrud in cillum. Aliqua aliquip cupidatat ea amet fugiat enim fugiat proident duis.",
+            "quantity": 1,
+            "price": 12000
+        },
+        {
+            "name": "Piña", 
+            "path": "assets/images/pina.png",
+            "description": "Excepteur anim exercitation aliqua proident do aliqua sit occaecat. Laboris ex voluptate pariatur do velit magna officia qui. Cillum ex veniam ipsum aliqua enim minim fugiat sint officia ea occaecat veniam. Dolor quis excepteur nostrud nostrud in cillum. Aliqua aliquip cupidatat ea amet fugiat enim fugiat proident duis.",
+            "quantity": 1,
+            "price": 9900
+        },
+        {
+            "name": "Chocolate", 
+            "path": "assets/images/chocolate.png",
+            "description": "Excepteur anim exercitation aliqua proident do aliqua sit occaecat. Laboris ex voluptate pariatur do velit magna officia qui. Cillum ex veniam ipsum aliqua enim minim fugiat sint officia ea occaecat veniam. Dolor quis excepteur nostrud nostrud in cillum. Aliqua aliquip cupidatat ea amet fugiat enim fugiat proident duis.",
+            "quantity": 1,
+            "price": 11700
+        }
+    ]
+}
