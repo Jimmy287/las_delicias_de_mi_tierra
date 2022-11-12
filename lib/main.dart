@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:las_delicias_de_mi_tierra/domain/providers/bottom_bar_provider.dart';
+import 'package:las_delicias_de_mi_tierra/ui/routes/app_routes.dart';
+import 'package:provider/provider.dart';
 
 void main() => runApp(const MyApp());
 
@@ -7,15 +10,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Las delicias de mi tierra',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Las delicias de mi tierra'),
-        ),
-        body: const Center(
-          child: Text('Hello World'),
-        ),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => BottombarProvider(),
+        )
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Gym App',
+        initialRoute: AppRoutes.initialRoute,
+        routes: AppRoutes.routes,
       ),
     );
   }
