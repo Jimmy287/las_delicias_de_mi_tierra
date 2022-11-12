@@ -20,8 +20,7 @@ class ProductEntity {
           description: (json['description'] != null)
               ? json['description']! as String
               : '',
-          quantity:
-              (json['description'] != null) ? json['description']! as int : 0,
+          quantity: (json['quantity'] != null) ? json['quantity']! as int : 0,
           price: (json['price'] != null) ? json['price']! as double : 0.0,
         );
   Map<String, Object?> toJson() {

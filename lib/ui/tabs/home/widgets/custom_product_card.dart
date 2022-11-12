@@ -16,18 +16,19 @@ class CustomProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.symmetric(horizontal: 12, vertical: 22),
       decoration: BoxDecoration(
         color: AppThemeLight.background,
         borderRadius: BorderRadius.circular(22),
         boxShadow: <BoxShadow>[
           BoxShadow(
-              color: Colors.black.withOpacity(0.25),
-              offset: const Offset(0, 0),
+              color: Colors.black.withOpacity(0.15),
+              offset: const Offset(5, 5),
               blurRadius: 10,
               spreadRadius: 5)
         ],
       ),
-      // height: size.height * 0.45,
+      height: size.height * 0.4,
       width: size.width * 0.75,
       child: Column(
         children: [
@@ -45,12 +46,12 @@ class CustomProductCard extends StatelessWidget {
                         color: AppThemeLight.primary,
                         fontSize: 52,
                         fontWeight: FontWeight.bold)),
-                // Padding(
-                //   padding: const EdgeInsets.symmetric(horizontal: 46),
-                //   child: FadeInImage(
-                //       placeholder: AssetImage('assets/images/no-image.jpg'),
-                //       image: AssetImage(productEntity.path!)),
-                // ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 46),
+                  child: FadeInImage(
+                      placeholder: AssetImage('assets/images/no-image.jpg'),
+                      image: AssetImage(productEntity.path!)),
+                ),
               ],
             ),
           ),
@@ -68,7 +69,7 @@ class CustomProductCard extends StatelessWidget {
                       GoogleFonts.poppins(color: Colors.black54, fontSize: 16),
                 ),
                 Text(
-                  '\$${productEntity.price}}',
+                  '\$${productEntity.price}',
                   overflow: TextOverflow.ellipsis,
                   maxLines: 2,
                   style: GoogleFonts.poppins(
