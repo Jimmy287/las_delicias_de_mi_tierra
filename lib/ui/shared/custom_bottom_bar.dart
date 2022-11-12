@@ -1,5 +1,7 @@
-import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:animate_do/animate_do.dart';
+import 'package:las_delicias_de_mi_tierra/global/enviroment.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:las_delicias_de_mi_tierra/domain/providers/bottom_bar_provider.dart';
 import 'package:las_delicias_de_mi_tierra/ui/themes/app_theme_light.dart';
@@ -34,8 +36,11 @@ class CustomBottomBar extends StatelessWidget {
           BottomBarItem(
             index: 1,
             icon: FontAwesomeIcons.whatsapp,
-            callback: () {
-              bottombarProvider.currentIndex = 1;
+            callback: () async {
+              // Send WhatsApp message to number phone
+              final Uri _url = Uri.parse(
+                  "whatsapp://send?phone=${Enviroment.whatsappNumber}&text=Hola");
+              if (!await launchUrl(_url)) throw 'Could not launch $_url';
             },
             bottombarProvider: bottombarProvider,
             height: height,

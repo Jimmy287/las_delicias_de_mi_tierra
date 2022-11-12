@@ -36,7 +36,7 @@ class CustomProductCard extends StatelessWidget {
                 spreadRadius: 5)
           ],
         ),
-        height: size.height * 0.4,
+        height: size.height * 0.35,
         width: size.width * 0.75,
         child: Column(
           children: [
@@ -56,10 +56,8 @@ class CustomProductCard extends StatelessWidget {
                           fontWeight: FontWeight.bold)),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 46),
-                    child: FadeInImage(
+                    child: Image(
                         fit: BoxFit.contain,
-                        placeholder:
-                            const AssetImage('assets/images/no-image.jpg'),
                         image: AssetImage(productEntity.path!)),
                   ),
                 ],

@@ -1,10 +1,8 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:las_delicias_de_mi_tierra/data/repositories/json_get_products.dart';
 import 'package:las_delicias_de_mi_tierra/domain/entities/product_entity.dart';
+import 'package:las_delicias_de_mi_tierra/ui/shared/load_data_error_widget.dart';
 import 'package:las_delicias_de_mi_tierra/ui/tabs/home/widgets/custom_product_card.dart';
 import 'package:las_delicias_de_mi_tierra/ui/themes/app_theme_light.dart';
 
@@ -14,23 +12,17 @@ class HomeTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
-    return FutureBuilder(
-        future: readProductsJson(),
+    return FutureBuilder<List<ProductEntity>>(
+        future: JsonGetProducts.readProductsJson(),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
-            Center(
-              child: Text(
-                'Ha ocurrido un error al cargar los productos. Por favor intente nuevamente.',
-                textAlign: TextAlign.justify,
-                style: GoogleFonts.poppins(color: Colors.black54, fontSize: 16),
-              ),
-            );
+            const LoadDataErrorWidget();
           }
           if (snapshot.hasData) {
             final List<ProductEntity> productsList = snapshot.data!;
             return Padding(
               padding: EdgeInsets.symmetric(
-                  horizontal: 26, vertical: size.height * 0.07),
+                  horizontal: 26, vertical: size.height * 0.06),
               child: Column(
                 children: [
                   Column(
@@ -53,9 +45,7 @@ class HomeTab extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(
-                    height: size.height * 0.07,
-                  ),
+                  SizedBox(height: size.height * 0.03),
                   Expanded(
                     child: ListView.builder(
                         physics: const BouncingScrollPhysics(),
@@ -65,7 +55,7 @@ class HomeTab extends StatelessWidget {
                             size: size, productEntity: productsList[index])),
                   ),
                   SizedBox(
-                    height: size.height * 0.07,
+                    height: size.height * 0.06,
                   ),
                   // CustomProductCard(size: size),
                 ],
@@ -76,16 +66,5 @@ class HomeTab extends StatelessWidget {
             child: CircularProgressIndicator.adaptive(),
           );
         });
-  }
-
-  Future<List<ProductEntity>> readProductsJson() async {
-    final String response =
-        await rootBundle.loadString('assets/json/product_list.json');
-    final data = await jsonDecode(response);
-    final List<dynamic> productList = data['products'];
-    return productList
-        .map((product) => ProductEntity.fromJson(product))
-        .toList();
-    // print(data.toString());
   }
 }
